@@ -2,6 +2,8 @@
 This document provides steps on how to create the configuration required on Zitadel using the scripts provided.
 Scripts creates all required configuration such as organization, project, roles, applications, etc.
 
+The idea is to use the same set of scripts to configure any Zitadel instance (local, dev, prod, etc).
+
 ## Preparation before run
 
 1. Install/Setup Zitadel instance
