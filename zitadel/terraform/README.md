@@ -7,25 +7,30 @@ Scripts creates all required configuration such as organization, project, roles,
 1. Install/Setup Zitadel instance
 2. Terraform provider version 1.5.2 and above
 3. Credential file local-token.json (located in the same directory as main.tf)
-   * Log in to the Zitadel management interface and navigate to Users,Click on Service Users to get
+   * Log in to the Zitadel management interface and navigate to Users, Click on Service Users to create an user and download the JWT key for the same. 
 
-## Run
+## Run Scripts
 
-* Connection to remote Zitadel instance usage configuration file: testbed.tfvars
-
+* Connection to remote (testbed) Zitadel instance usage configuration file: testbed.tfvars
 * Connect to local Zitadel instance using configuration file: local.tfvars
 
-
 Example of connecting to a remote Zitadel instance
-1. terraform init
-2. terraform plan -var-file=environments/testbed.tfvars -var-file=environments/environment.tfvars
-3. terraform apply -var-file=environments/testbed.tfvars -var-file=environments/environment.tfvars
-4. get the 'client_id' and 'client_secert' of the applications. This is needed for configuring the consuming applications. 
-   * get the client_id of the applications
-      * terraform output -json
-   * get the client_scert of the application_api
+```ssh
+ terraform init
+ terraform plan -var-file=environments/testbed.tfvars -var-file=environments/environment.tfvars
+ terraform apply -var-file=environments/testbed.tfvars -var-file=environments/environment.tfvars
+```
+## Get Consumer Details
+
+Get the 'client_id' and 'client_secert' of the applications created by the above scripts. This is needed for configuring the consuming applications. 
+   * `client_id`s can be directly obtained from the below command
+     
+     ```ssh
+      terraform output -json
+     ```
+   * `client_secret` is sensitive data and hence not logged in the Terraform output. It must be hence obtained from Zitadel UI using admin user. 
       * Log in to the Zitadel management interface, navigate to Applications under the project, 
-       and enter the application_ API, click on the Actions button in the upper right corner, 
+       and enter the application_ API, click on the Actions button in the top-right corner, 
        and then Regenerate Client Secret
 5. terraform destroy -var-file=environments/testbed.tfvars -var-file=environments/environment.tfvars
 
