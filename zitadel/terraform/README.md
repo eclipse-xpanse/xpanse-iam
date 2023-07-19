@@ -1,6 +1,6 @@
-This terraform script will create an organization called eclipse-xpanse for you. There is a project called
-eclipse-xpanse under the organization. The three applications under the project are xpanse-api,xpanse-ui,and swagger-ui.
-The three roles of the project are admin,csp,and user.
+### Automation for Zitadel Configuration
+This document provides steps on how to create the configuration required on Zitadel using the scripts provided.
+Scripts creates all required configuration such as organization, project, roles, applications, etc.
 
 ## Preparation before run
 
@@ -20,7 +20,7 @@ Example of connecting to a remote Zitadel instance
 1. terraform init
 2. terraform plan -var-file=environments/testbed.tfvars -var-file=environments/environment.tfvars
 3. terraform apply -var-file=environments/testbed.tfvars -var-file=environments/environment.tfvars
-4. get the 'client_id' and 'client_secert' of the applications
+4. get the 'client_id' and 'client_secert' of the applications. This is needed for configuring the consuming applications. 
    * get the client_id of the applications
       * terraform output -json
    * get the client_scert of the application_api
@@ -28,3 +28,5 @@ Example of connecting to a remote Zitadel instance
        and enter the application_ API, click on the Actions button in the upper right corner, 
        and then Regenerate Client Secret
 5. terraform destroy -var-file=environments/testbed.tfvars -var-file=environments/environment.tfvars
+
+> Note: Due a open bug in Zitadel-Terraform-Provider, we are not able to change branding icons. This must be done manually for now.
