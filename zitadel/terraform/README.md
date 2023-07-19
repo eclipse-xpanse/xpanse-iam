@@ -1,4 +1,4 @@
-### Automation for Zitadel Configuration
+# Automation for Zitadel Configuration
 This document provides steps on how to create the configuration required on Zitadel using the scripts provided.
 Scripts creates all required configuration such as organization, project, roles, applications, etc.
 
