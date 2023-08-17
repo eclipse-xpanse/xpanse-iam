@@ -20,7 +20,7 @@ Example of connecting to a remote Zitadel instance
 ```ssh
  terraform init
  terraform plan -var-file=environments/testbed.tfvars -var-file=environments/environment.tfvars
- terraform apply -var-file=environments/testbed.tfvars -var-file=environments/environment.tfvars
+ terraform apply -auto-approve -var-file=environments/testbed.tfvars -var-file=environments/environment.tfvars
 ```
 
 > Note: Due a open bug in Zitadel-Terraform-Provider, we are not able to change branding icons. This must be done manually for now.
@@ -28,21 +28,15 @@ Example of connecting to a remote Zitadel instance
 
 ## Get Consumer Details
 
-Get the 'client_id' and 'client_secert' of the applications created by the above scripts. This is needed for configuring the consuming applications. 
-   * `client_id`s can be directly obtained from the below command
-     
-     ```ssh
-      terraform output -json
-     ```
-   * `client_secret` is sensitive data and hence not logged in the Terraform output. It must be hence obtained from Zitadel UI using admin user. 
-      * Log in to the Zitadel management interface, navigate to Applications under the project, 
-       and enter the application_ API, click on the Actions button in the top-right corner, 
-       and then Regenerate Client Secret
+Get the output of the applications created by the above scripts. This is needed for configuring the consuming applications.
+```ssh
+terraform output -json
+```
 
 ## Remove configuration
 
 All added configuration can be removed using the below command.
 
 ```ssh
-terraform destroy -var-file=environments/testbed.tfvars -var-file=environments/environment.tfvars
+terraform destroy -auto-approve -var-file=environments/testbed.tfvars -var-file=environments/environment.tfvars
 ```
