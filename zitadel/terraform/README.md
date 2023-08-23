@@ -1,6 +1,6 @@
 # Automation for Zitadel Configuration
 This document provides steps on how to create the configuration required on Zitadel using the scripts provided.
-Scripts creates all required configuration such as organization, project, roles, applications, etc.
+Scripts create all required configuration such as organization, project, roles, applications, etc.
 
 The idea is to use the same set of scripts to configure any Zitadel instance (local, dev, prod, etc).
 
@@ -17,7 +17,7 @@ The idea is to use the same set of scripts to configure any Zitadel instance (lo
 * Connect to local Zitadel instance using configuration file: local.tfvars
 
 Example of connecting to a remote Zitadel instance
-```ssh
+```shell
  terraform init
  terraform plan -var-file=environments/testbed.tfvars -var-file=environments/environment.tfvars
  terraform apply -auto-approve -var-file=environments/testbed.tfvars -var-file=environments/environment.tfvars
@@ -29,14 +29,14 @@ Example of connecting to a remote Zitadel instance
 ## Get Consumer Details
 
 Get the output of the applications created by the above scripts. This is needed for configuring the consuming applications.
-```ssh
-terraform output -json
+```shell
+terraform output
 ```
 
 ## Remove configuration
 
 All added configuration can be removed using the below command.
 
-```ssh
+```shell
 terraform destroy -auto-approve -var-file=environments/testbed.tfvars -var-file=environments/environment.tfvars
 ```

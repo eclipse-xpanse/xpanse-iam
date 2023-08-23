@@ -1,3 +1,7 @@
 .idea
 .vs
 .vscode
+zitadel\terraform\.terraform
+zitadel\terraform\.terraform.lock.hcl
+zitadel\terraform\terraform.*
+zitadel\terraform\*.json

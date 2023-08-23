@@ -2,7 +2,7 @@ resource zitadel_application_api application_api {
   org_id           = zitadel_org.eclipse-xpanse.id
   project_id       = zitadel_project.eclipse-xpanse.id
   name             = "xpanse-api"
-  auth_method_type = "API_AUTH_METHOD_TYPE_PRIVATE_KEY_JWT"
+  auth_method_type = "API_AUTH_METHOD_TYPE_BASIC"
 }
 
 resource zitadel_application_oidc xpanse-ui {
