@@ -23,7 +23,7 @@ output "authorization-swagger-ui-client-id" {
   description = "Output the value of authorization-swagger-ui-client-id for configuring the consuming application 'Xapnse-Api'."
 }
 
-output "authorization-xpanse-ui-client-id" {
+output "REACT_APP_ZITADEL_CLIENT_ID" {
   value       = nonsensitive(zitadel_application_oidc.xpanse-ui.client_id)
-  description = "Output the value of authorization-xpanse-ui-client-i for configuring the consuming application 'Xpanse-UI'."
+  description = "Output the value of REACT_APP_ZITADEL_CLIENT_ID for configuring the consuming application 'Xpanse-UI'."
 }
