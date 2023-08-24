@@ -39,7 +39,7 @@ resource zitadel_application_oidc swagger-ui {
   dev_mode                    = true
   access_token_type           = "OIDC_TOKEN_TYPE_BEARER"
   access_token_role_assertion = false
-  id_token_role_assertion     = false
+  id_token_role_assertion     = true
   id_token_userinfo_assertion = true
   additional_origins          = []
 }

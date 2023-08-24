@@ -1,6 +1,6 @@
 locals{
-  protocol = var.insecure == true ? "https://" : "http://"
-  port_str = var.port == 80 ? "" : var.port == 443 ? "" : var.port
+  protocol = var.insecure == false ? "https://" : "http://"
+  port_str = var.port == 80 ? "" : var.port == 443 ? "" : ":${var.port}"
 }
 
 output "authorization-server-endpoint" {
