@@ -1,3 +1,9 @@
+variable "auth_token_type" {
+  type        = string
+  default     = "OpaqueToken"
+  description = "The token type for authorization with a default value of 'OpaqueToken' and another value of 'JWT'.Better performance with type 'JWT', safer with type 'OpaqueToken'. Update the default value with 'JWT' can improve performance of authorization."
+}
+
 variable "domain" {
   type    = string
 }
