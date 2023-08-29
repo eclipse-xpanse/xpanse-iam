@@ -10,5 +10,6 @@ post_logout_redirect_uris   = ["",
 								"/services",
 								"/myServices",
 								"/order",
+								"/healthCheck",
 								"/createService"]
 redirect_swagger-ui_uris   = ["/swagger-ui/oauth2-redirect.html", "/auth/token"]
