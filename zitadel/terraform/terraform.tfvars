@@ -1,5 +1,5 @@
 jwt_profile_file = "local-token.json"
-redirect_xpanse-ui_uris    = ["/authentication/callback"]
+redirect_xpanse-ui_uris    = ["/authentication/callback", "/authentication/silent-callback"]
 post_logout_redirect_uris   = ["",
 								"/credentials",
 								"/home",
@@ -12,4 +12,4 @@ post_logout_redirect_uris   = ["",
 								"/order",
 								"/healthCheck",
 								"/createService"]
-redirect_swagger-ui_uris   = ["/swagger-ui/oauth2-redirect.html","/auth/token"]
+redirect_swagger-ui_uris   = ["/swagger-ui/oauth2-redirect.html", "/auth/token"]
