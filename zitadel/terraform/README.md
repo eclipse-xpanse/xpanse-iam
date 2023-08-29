@@ -14,7 +14,11 @@ The idea is to use the same set of scripts to configure any Zitadel instance (lo
 ## Run Scripts
 
 * Connection to remote (testbed) Zitadel instance usage configuration file: testbed.tfvars
-* Connect to local Zitadel instance using configuration file: local.tfvars
+* Connection to local Zitadel instance using configuration file: local.tfvars
+* There are two token types for authorization with a default value of 'OpaqueToken' and another value of 'JWT'. 
+Better performance with type 'JWT', safer with type 'OpaqueToken'. Update the default value of the variable
+`auth_token_type` in file [variables.tf](./variables.tf) with 'JWT' to improve performance of authorization.
+
 
 Example of connecting to a remote Zitadel instance
 ```shell
@@ -23,7 +27,7 @@ Example of connecting to a remote Zitadel instance
  terraform apply -auto-approve -var-file=environments/testbed.tfvars -var-file=environments/environment.tfvars
 ```
 
-> Note: Due a open bug in Zitadel-Terraform-Provider, we are not able to change branding icons. This must be done manually for now.
+> Note: Due an open bug in Zitadel-Terraform-Provider, we are not able to change branding icons. This must be done manually for now.
 
 
 ## Get Consumer Details

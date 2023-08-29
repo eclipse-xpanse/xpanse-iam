@@ -11,7 +11,7 @@ resource "zitadel_label_policy" "label_policy" {
   hide_login_name_suffix = false
   warn_color             = "#cd3d56"
   background_color       = "#ffffff"
-  font_color             = "#ffffff"
+  font_color             = "#000000"
   primary_color_dark     = "#2073c4"
   background_color_dark  = "#111827"
   warn_color_dark        = "#ff3b5b"
