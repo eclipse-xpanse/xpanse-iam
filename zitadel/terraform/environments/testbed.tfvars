@@ -1,3 +1,6 @@
 domain           = "iam.xpanse.site"
 insecure         = "false"
 port             = "443"
+xpanse-ui_base_uri = "https://demo.xpanse.site"
+xpanse_swagger-ui_base_uri = "https://demo.xpanse.site"
+terraform-boot_swagger-ui_base_uri = "http://localhost:9090"
