@@ -23,8 +23,8 @@ Better performance with type 'JWT', safer with type 'OpaqueToken'. Update the de
 Example of connecting to a remote Zitadel instance
 ```shell
  terraform init
- terraform plan -var-file=environments/testbed.tfvars -var-file=environments/environment.tfvars
- terraform apply -auto-approve -var-file=environments/testbed.tfvars -var-file=environments/environment.tfvars
+ terraform plan -var-file=environments/testbed.tfvars
+ terraform apply -auto-approve -var-file=environments/testbed.tfvars
 ```
 
 > Note: Due an open bug in Zitadel-Terraform-Provider, we are not able to change branding icons. This must be done manually for now.
@@ -42,5 +42,5 @@ terraform output
 All added configuration can be removed using the below command.
 
 ```shell
-terraform destroy -auto-approve -var-file=environments/testbed.tfvars -var-file=environments/environment.tfvars
+terraform destroy -auto-approve -var-file=environments/testbed.tfvars
 ```

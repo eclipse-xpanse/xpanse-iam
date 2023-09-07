@@ -36,6 +36,10 @@ variable "xpanse-ui_base_uri" {
   type    = string
 }
 
-variable "swagger-ui_base_uri" {
+variable "xpanse_swagger-ui_base_uri" {
+  type    = string
+}
+
+variable "terraform-boot_swagger-ui_base_uri" {
   type    = string
 }
