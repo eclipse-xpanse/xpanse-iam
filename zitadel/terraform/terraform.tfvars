@@ -1,15 +1,10 @@
-jwt_profile_file = "local-token.json"
-redirect_xpanse-ui_uris    = ["/authentication/callback", "/authentication/silent-callback"]
-post_logout_redirect_uris   = ["",
-								"/credentials",
-								"/home",
-								"/register",
-								"/monitor",
-								"/",
-								"/catalog",
-								"/services",
-								"/myServices",
-								"/order",
-								"/healthCheck",
-								"/createService"]
-redirect_swagger-ui_uris   = ["/swagger-ui/oauth2-redirect.html", "/auth/token"]
+jwt_profile_file          = "local-token.json"
+redirect_xpanse-ui_uris   = ["/authentication/callback", "/authentication/silent-callback"]
+post_logout_redirect_uris = ["", "/", "/home", "/credentials", "/register", "/monitor", "/catalog", "/services", "/myServices", "/order", "/healthCheck", "/createService"]
+redirect_swagger-ui_uris  = ["/swagger-ui/oauth2-redirect.html", "/auth/token"]
+
+smtp_sender_address       = ""
+smtp_sender_name          = ""
+smtp_host_port            = ""
+smtp_login_user           = ""
+smtp_login_password       = ""

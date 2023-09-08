@@ -20,6 +20,31 @@ variable "jwt_profile_file" {
   type    = string
 }
 
+variable "smtp_sender_address" {
+  type        = string
+  description = "The address of e-mail sender."
+}
+
+variable "smtp_sender_name" {
+  type        = string
+  description = "The name of e-mail sender."
+}
+
+variable "smtp_host_port" {
+  type        = string
+  description = "The host and port of smtp service with format {host}:{port}. Example:'smtp.gmail.com:587'"
+}
+
+variable "smtp_login_user" {
+  type        = string
+  description = "The account of e-mail sender to login."
+}
+
+variable "smtp_login_password" {
+  type        = string
+  description = "The password of e-mail sender to login."
+}
+
 variable "redirect_xpanse-ui_uris" {
   type    = list(string)
 }

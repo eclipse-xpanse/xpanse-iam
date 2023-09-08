@@ -6,7 +6,7 @@ provider "zitadel" {
 }
 
 resource "zitadel_label_policy" "label_policy" {
-  org_id                 = zitadel_org.eclipse-xpanse.id
+  org_id                 = zitadel_org.xpanse.id
   primary_color          = "#5469d4"
   hide_login_name_suffix = false
   warn_color             = "#cd3d56"
