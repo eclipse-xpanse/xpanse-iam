@@ -1,3 +1,3 @@
-resource "zitadel_org" "eclipse-xpanse" {
-  name = "eclipse-xpanse"
+resource "zitadel_org" "xpanse" {
+  name = "XPANSE"
 }
