@@ -18,3 +18,10 @@ resource zitadel_project_role project_role_user {
   role_key     = "user"
   display_name = "user"
 }
+
+resource zitadel_project_role project_role_csp {
+  org_id       = zitadel_org.xpanse.id
+  project_id   = zitadel_project.eclipse-xpanse.id
+  role_key     = "csp"
+  display_name = "csp"
+}
