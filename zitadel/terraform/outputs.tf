@@ -10,22 +10,22 @@ output "authorization-server-endpoint" {
 
 output "authorization-token-type" {
   value       = var.auth_token_type
-  description = "Output the value of authorization.token.type for configuring the consuming application 'Xapnse-Api'."
+  description = "Output the value of authorization.token.type for configuring the consuming application 'Xpanse-Api'."
 }
 
 output "authorization-api-client-id" {
   value       = nonsensitive(zitadel_application_api.application_api.client_id)
-  description = "Output the value of authorization.api.client.id for configuring the consuming application 'Xapnse-Api'."
+  description = "Output the value of authorization.api.client.id for configuring the consuming application 'Xpanse-Api'."
 }
 
 output "authorization-api-client-secret" {
   value       = nonsensitive(zitadel_application_api.application_api.client_secret)
-  description = "Output the value of authorization.api.client.secret for configuring the consuming application 'Xapnse-Api'."
+  description = "Output the value of authorization.api.client.secret for configuring the consuming application 'Xpanse-Api'."
 }
 
 output "authorization-swagger-ui-client-id" {
   value       = nonsensitive(zitadel_application_oidc.swagger-ui.client_id)
-  description = "Output the value of authorization.swagger.ui.client.id for configuring the consuming application 'Xapnse-Api'."
+  description = "Output the value of authorization.swagger.ui.client.id for configuring the consuming application 'Xpanse-Api'."
 }
 
 output "REACT_APP_ZITADEL_AUTHORITY_URL" {
@@ -36,4 +36,14 @@ output "REACT_APP_ZITADEL_AUTHORITY_URL" {
 output "REACT_APP_ZITADEL_CLIENT_ID" {
   value       = nonsensitive(zitadel_application_oidc.xpanse-ui.client_id)
   description = "Output the value of REACT_APP_ZITADEL_CLIENT_ID for configuring the consuming application 'Xpanse-UI'."
+}
+
+output "oauth-protected-api-client-id" {
+  value       = jsondecode(resource.terracurl_request.machine_secret.response).clientId
+  description = "Output the value of oauth.protected.api.client.id for configuring the consuming application 'Xpanse-Api'."
+}
+
+output "oauth-protected-api-client-secret" {
+  value       = jsondecode(resource.terracurl_request.machine_secret.response).clientSecret
+  description = "Output the value of oauth.protected.api.client.secret for configuring the consuming application 'Xpanse-Api'."
 }
