@@ -44,7 +44,8 @@ resource zitadel_application_oidc swagger-ui {
   redirect_uris               = flatten([
     for path in var.redirect_swagger-ui_uris : [
       "${var.xpanse_swagger-ui_base_uri}${path}",
-      "${var.terraform-boot_swagger-ui_base_uri}${path}"
+      "${var.terraform-boot_swagger-ui_base_uri}${path}",
+      "${var.tofu-maker_swagger-ui_base_uri}${path}"
     ]
     ])
 }

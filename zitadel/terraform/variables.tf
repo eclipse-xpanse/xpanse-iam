@@ -68,3 +68,7 @@ variable "xpanse_swagger-ui_base_uri" {
 variable "terraform-boot_swagger-ui_base_uri" {
   type    = string
 }
+
+variable "tofu-maker_swagger-ui_base_uri" {
+  type    = string
+}
