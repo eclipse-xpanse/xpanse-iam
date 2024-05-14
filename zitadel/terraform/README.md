@@ -9,7 +9,7 @@ The idea is to use the same set of scripts to configure any Zitadel instance (lo
 1. Install/Setup Zitadel instance
 2. Terraform provider version 1.5.2 and above
 3. Credential file local-token.json (located in the same directory as main.tf)
-   * Operation reference the chapter 'Add Service User and Get Credential File' in [zitadel/README.md](../README.md#Add Service User and Get Credential File)
+   * Operation reference the chapter 'Add Service User and Get Credential File' in [README.md](../README.md#add-service-user-and-get-credential-file)
 
 ## Run Scripts
 
@@ -18,7 +18,7 @@ The idea is to use the same set of scripts to configure any Zitadel instance (lo
 * There are two token types for authorization with a default value of 'OpaqueToken' and another value of 'JWT'. Better performance with type 'JWT', safer with type 'OpaqueToken'.
   * Update the default value of the variable `auth_token_type` in file [variables.tf](./variables.tf) with 'JWT' to improve performance of authorization.
 * Config SMTP to enable function 'User Registration'.
-   * Operation reference the chapter 'Config SMTP to Enable User Registration' in [zitadel/README.md](../README.md#Add Admin User for Xpanse).
+   * Operation reference the chapter 'Config SMTP to Enable User Registration' in [zitadel/README.md](../README.md#add-admin-user-for-xpanse).
 
 Example of connecting to a remote Zitadel instance
 ```shell
@@ -28,7 +28,7 @@ Example of connecting to a remote Zitadel instance
 ```
 
 > Note: Due to an open bug in Zitadel-Terraform-Provider, we are not able to change branding icons. This must be done manually for now.
-> Operation reference the chapter 'Manual Configuration on Console' in [zitadel/README.md](../README.md#Manual Configuration on Console)
+> Operation reference the chapter 'Manual Configuration on Console' in [zitadel/README.md](../README.md#manual-configuration-on-console)
 
 ## Get Consumer Details
 
