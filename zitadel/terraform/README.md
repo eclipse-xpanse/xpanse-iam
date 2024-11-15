@@ -23,8 +23,8 @@ The idea is to use the same set of scripts to configure any Zitadel instance (lo
 Example of connecting to a remote Zitadel instance
 ```shell
  terraform init
- terraform plan -var-file=environments/testbed.tfvars
- terraform apply -auto-approve -var-file=environments/testbed.tfvars
+ terraform plan -var-file=environments/testbed.tfvars -parallelism=1
+ terraform apply -auto-approve -var-file=environments/testbed.tfvars -parallelism=1
 ```
 
 > Note: Due to an open bug in Zitadel-Terraform-Provider, we are not able to change branding icons. This must be done manually for now.
