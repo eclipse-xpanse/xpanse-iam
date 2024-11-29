@@ -60,7 +60,7 @@ Certificates provided by `LetsEncrypt` is always valid only for 3 months. It can
 
 ```shell
 docker-compose run --rm certbot renew
-docker restart zitadel-webserver-1
+docker restart compose-webserver-1
 ```
 
 More information about the certbot can be found in
