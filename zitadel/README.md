@@ -214,12 +214,12 @@ Grant role `isv` of the project `eclipse-xpanse` to the new isv user.
 
 #### Edit Metadata Of New Isv User
 
-Edit the metadata of the new isv user. Add key `namespace` with fixed value into the metadata.
-![edit_isv_user_metadata_add_namespace](static/edit_isv_user_metadata_add_namespace.png)
+Edit the metadata of the new isv user. Add key `isv` with fixed value into the metadata.
+![edit_isv_user_metadata_add_isv](static/edit_isv_user_metadata_add_isv.png)
 
-> Note: Add the key `namespace` with a fixed value into the metadata of the isv user is necessary.
+> Note: Add the key `isv` with a fixed value into the metadata of the isv user is necessary.
 > The isv user can view or manage the registered service templates those owned the same value of
-> `namespace` in xpanse. If the value of the key `namespace` in the metadata of isv user is
+> `isv` in xpanse. If the value of the key `isv` in the metadata of isv user is
 > invalid or not exist, the isv user only can view or manage the service templates registered
 > by himself.
 
