@@ -1,0 +1,50 @@
+services:
+  zitadel:
+    user: "${UID:-1001}"
+    restart: 'always'
+    networks:
+      - 'zitadel'
+    image: 'ghcr.io/zitadel/zitadel:latest'
+    command: 'start-from-init --masterkey "MasterkeyNeedsToHave32Characters" --tlsMode disabled'
+    environment:
+      ZITADEL_DATABASE_POSTGRES_HOST: db
+      ZITADEL_DATABASE_POSTGRES_PORT: 5432
+      ZITADEL_DATABASE_POSTGRES_DATABASE: zitadel
+      ZITADEL_DATABASE_POSTGRES_USER_USERNAME: zitadel
+      ZITADEL_DATABASE_POSTGRES_USER_PASSWORD: zitadel
+      ZITADEL_DATABASE_POSTGRES_USER_SSL_MODE: disable
+      ZITADEL_DATABASE_POSTGRES_ADMIN_USERNAME: postgres
+      ZITADEL_DATABASE_POSTGRES_ADMIN_PASSWORD: postgres
+      ZITADEL_DATABASE_POSTGRES_ADMIN_SSL_MODE: disable
+      ZITADEL_EXTERNALSECURE: false
+      ZITADEL_FIRSTINSTANCE_MACHINEKEYPATH: /machinekey/zitadel-admin-sa.json
+      ZITADEL_FIRSTINSTANCE_ORG_MACHINE_MACHINE_USERNAME: zitadel-admin-sa
+      ZITADEL_FIRSTINSTANCE_ORG_MACHINE_MACHINE_NAME: Admin
+      ZITADEL_FIRSTINSTANCE_ORG_MACHINE_MACHINEKEY_TYPE: 1
+      ZITADEL_FIRSTINSTANCE_ORG_HUMAN_PASSWORDCHANGEREQUIRED: false
+      ZITADEL_FIRSTINSTANCE_ORG_HUMAN_PASSWORD: Zitadel@123 # Default admin password.
+    depends_on:
+      db:
+        condition: 'service_healthy'
+    ports:
+      - '8088:8080'
+    volumes:
+      - ${VOLUME_POINT:-./machinekey}:/machinekey:rw
+
+  db:
+    restart: 'always'
+    image: custom-pg-db # Custom postgres image.
+    environment:
+      PGUSER: postgres
+      POSTGRES_PASSWORD: postgres
+    networks:
+      - 'zitadel'
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready", "-d", "zitadel", "-U", "postgres" ]
+      interval: '10s'
+      timeout: '2400s'
+      retries: 500
+      start_period: '20s'
+
+networks:
+  zitadel:

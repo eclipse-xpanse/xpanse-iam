@@ -5,19 +5,19 @@ variable "auth_token_type" {
 }
 
 variable "domain" {
-  type    = string
+  type = string
 }
 
 variable "insecure" {
-  type    = bool
+  type = bool
 }
 
 variable "port" {
-  type    = number
+  type = number
 }
 
 variable "jwt_profile_file" {
-  type    = string
+  type = string
 }
 
 variable "smtp_sender_address" {
@@ -46,29 +46,49 @@ variable "smtp_login_password" {
 }
 
 variable "redirect_xpanse-ui_uris" {
-  type    = list(string)
+  type = list(string)
 }
 
-variable "post_logout_redirect_uris"{
-  type    = list(string)
+variable "post_logout_redirect_uris" {
+  type = list(string)
 }
 
 variable "redirect_swagger-ui_uris" {
-  type    = list(string)
+  type = list(string)
 }
 
 variable "xpanse-ui_base_uri" {
-  type    = string
+  type = string
 }
 
 variable "xpanse_swagger-ui_base_uri" {
-  type    = string
+  type = string
 }
 
 variable "terraform-boot_swagger-ui_base_uri" {
-  type    = string
+  type = string
 }
 
 variable "tofu-maker_swagger-ui_base_uri" {
-  type    = string
+  type = string
+}
+
+variable "is_local_dev_env" {
+  type        = bool
+  description = "Flag to control changes to be done only for dev environments"
+}
+
+variable "test_users" {
+  description = "list of test users that must be created on non-production environments"
+  type = list(object({
+    name = string
+    email = string
+    password = string
+    roles = list(string)
+    meta-data = list(object({
+      key = string
+      value = string
+    }))
+  }))
+
 }

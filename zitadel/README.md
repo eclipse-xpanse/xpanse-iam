@@ -12,7 +12,7 @@ config the xpanse project with the service instance of Zitadel.
 
 Here are two types of service instance deployment solutions. You can deploy a local service instance
 of Zitadel according
-to the document [local-installation-steps.md](local/local-installation-steps.md) or deploy a
+to the document [local-installation-steps.md](local/run/run-dev-zitadel-containers) or deploy a
 production service instance of
 Zitadel according to the
 document [testbed-installation-steps.md](testlab/testbed-installation-steps.md).

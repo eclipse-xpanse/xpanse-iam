@@ -3,9 +3,17 @@ name: Build Zitadel Dev Images
 on:
   workflow_dispatch:
 
+env:
+  BOT_USER_NAME: eclipse-xpanse-bot
+  BOT_EMAIL_ID: xpanse-bot@eclipse.org
+  REGISTRY: ghcr.io
+
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
 
     steps:
       - name: Check out code
@@ -14,28 +22,68 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
 
+      - name: Login to Github Packages
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ env.BOT_USER_NAME }}
+          password: ${{ secrets.BOT_GITHUB_DOCKER_TOKEN }}
+
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v3
         with:
-          terraform_version: 1.6.0
+          terraform_version: 1.6.1
 
-      - name: start containers using docker compose
+      - name: build custom postgres image with changed PGDATA
         run: |
-          docker compose up -d
-        working-directory: zitadel/local/compose
+          docker build -t custom-pg-db:latest .
+        working-directory: zitadel/local/build
+
+      - name: start containers using docker build
+        run: |
+          mkdir ${{ runner.temp }}/machinekey
+          VOLUME_POINT=${{ runner.temp }}/machinekey docker compose up -d
+        working-directory: zitadel/local/build
+
+      - name: Wait for API Response
+        uses: mydea/action-wait-for-api@v1
+        continue-on-error: true
+        with:
+          url: "http://localhost:8088/debug/healthz"
+          expected-status: "200"   # You can specify other 2xx codes as needed
+          timeout: "60"           # Maximum wait time in seconds
+          interval: "10"
 
       - name: copy admin service account key
         run: |
-          cp machineKey/zitadel-admin-sa.json ../../terraform
-        working-directory: zitadel/local/compose
-
-      - name: copy admin service account key
-        run: |  
-          curl -sSL https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh -o wait-for-it.sh
-          chmod +x wait-for-it.sh
-          ./wait-for-it.sh localhost:8088 --timeout=180 --strict -- echo "Application is up!"  
+          cp ${{ runner.temp }}/machinekey/* .
+        working-directory: zitadel/terraform
 
       - name: configure Zitadel
         run: |
+          terraform init 
           terraform apply -var-file=environments/local.tfvars -auto-approve
+          terraform output -json > output.json
         working-directory: zitadel/terraform
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: access details  # Name of the artifact
+          path: zitadel/terraform/*.json
+
+      - name: commit images
+        run: |
+          JOB_LINK="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          docker stop compose-zitadel-1
+          docker stop compose-db-1
+          docker commit  --change="LABEL job_link=\"$JOB_LINK\""  compose-zitadel-1 xpanse-zitadel-dev-server
+          docker commit  --change="LABEL job_link=\"$JOB_LINK\""  compose-db-1 xpanse-zitadel-dev-db
+
+      - name: Build and push Docker image
+        run: |
+          JOB_LINK="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          docker tag xpanse-zitadel-dev-server:latest ${{ env.REGISTRY }}/${{ github.repository_owner }}/xpanse-zitadel-dev-server:latest
+          docker tag xpanse-zitadel-dev-db:latest ${{ env.REGISTRY }}/${{ github.repository_owner }}/xpanse-zitadel-dev-db:latest
+          docker push ${{ env.REGISTRY }}/${{ github.repository_owner }}/xpanse-zitadel-dev-server:latest
+          docker push ${{ env.REGISTRY }}/${{ github.repository_owner }}/xpanse-zitadel-dev-db:latest
