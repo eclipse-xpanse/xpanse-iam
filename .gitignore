@@ -6,3 +6,4 @@
 *.tfstate
 *token.json
 *.tfstate.backup
+zitadel-admin-sa.json

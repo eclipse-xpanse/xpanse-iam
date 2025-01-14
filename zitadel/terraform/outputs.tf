@@ -39,11 +39,11 @@ output "REACT_APP_ZITADEL_CLIENT_ID" {
 }
 
 output "oauth-protected-api-client-id" {
-  value       = jsondecode(resource.terracurl_request.machine_secret.response).clientId
+  value       = nonsensitive(zitadel_machine_user.api_client_user.client_id)
   description = "Output the value of oauth.protected.api.client.id for configuring the consuming application 'Xpanse-Api'."
 }
 
 output "oauth-protected-api-client-secret" {
-  value       = jsondecode(resource.terracurl_request.machine_secret.response).clientSecret
+  value       = nonsensitive(zitadel_machine_user.api_client_user.client_secret)
   description = "Output the value of oauth.protected.api.client.secret for configuring the consuming application 'Xpanse-Api'."
 }

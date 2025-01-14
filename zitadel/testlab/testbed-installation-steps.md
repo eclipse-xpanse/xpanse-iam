@@ -8,7 +8,7 @@ This installation is a replica of production setup but without high availability
 the following components running
 
 1. Zitadel
-2. Cockroach DB
+2. Postgres DB
 3. Nginx Load Balancer
 4. CertBot - Not actively running
 
