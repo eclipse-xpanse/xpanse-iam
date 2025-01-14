@@ -19,3 +19,20 @@ and also inform team that the latest images must be pulled.
 
 - [xpanse UI auth config](https://github.com/eclipse-xpanse/xpanse-ui/blob/main/.env.zitadel-local)
 - [xpanse app auth config](https://github.com/eclipse-xpanse/xpanse/blob/main/runtime/src/main/resources/application-zitadel.properties)
+
+## Building Images Locally
+
+If necessary to build the images locally, then the following steps must be followed. 
+
+```shell
+docker build -t custom-pg-db:latest .
+docker compose up -d
+```
+Wait for the server to be up and the service account key to be generated under `machinekey` folder. 
+Then copy the service account key to `terraform` folder and then apply changes.
+
+```shell
+cd ../../terraform
+cp ../../build/machinekey/zitadel-machine.sa.json .
+terraform apply -var-file=environments/local.tfvars -auto-approve
+```
