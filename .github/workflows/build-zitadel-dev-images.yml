@@ -75,10 +75,10 @@ jobs:
       - name: commit images
         run: |
           JOB_LINK="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-          docker stop compose-zitadel-1
-          docker stop compose-db-1
-          docker commit  --change="LABEL job_link=\"$JOB_LINK\""  compose-zitadel-1 xpanse-zitadel-dev-server
-          docker commit  --change="LABEL job_link=\"$JOB_LINK\""  compose-db-1 xpanse-zitadel-dev-db
+          docker compose stop
+          docker commit  --change="LABEL job_link=\"$JOB_LINK\""  application xpanse-zitadel-dev-server
+          docker commit  --change="LABEL job_link=\"$JOB_LINK\""  db xpanse-zitadel-dev-db
+        working-directory: zitadel/local/build
 
       - name: Build and push Docker image
         run: |
