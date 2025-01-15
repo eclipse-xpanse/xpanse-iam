@@ -96,7 +96,7 @@ resource "terracurl_request" "update_password" {
     x-zitadel-orgid = var.xpanse_org_id
     Content-Type    = "application/json"
     Accept          = "application/json"
-    Authorization   = "Bearer ${resource.zitadel_personal_access_token.apiclient_user_id_token.token}"
+    Authorization   = "Bearer ${zitadel_personal_access_token.apiclient_user_id_token.token}"
   }
   request_body = <<EOF
   {

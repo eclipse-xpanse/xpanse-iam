@@ -104,24 +104,6 @@ After successfully executing the Terraform script, the Terraform outputs is as b
 The default administrator user login the console of Zitadel to view added configurations:
 ![view_org_project_apps](static/view_org_project_apps.png)
 
-### Manual Configuration on Console
-
-Due to an open bug in Zitadel-Terraform-Provider, we are not able to complete following settings and
-must be done manually for now.
-
-1. Set organization `XPANSE` as default.
-   Open the organization management page, Click on the option 'Set as default organization' of the
-   newly created organization named `XPANSE` in the list of `ORGANIZATIONS`,
-   then click on the name `XPANSE` to open the manage page of organization `XPANSE`.
-   ![set_org_xpanse_as_default](static/set_org_xpanse_as_default.png)
-2. Set appearance of organization `XPANSE`.
-   Click the button `Modify` in the box `Appearance` on the opened manage page of
-   organization `XPANSE`.
-   ![set_org_xpanse_appearance_1](static/set_org_xpanse_appearance_1.png)
-3. Upload logo and icon both in `Light Model` and `Dark Model`. The required logos and icons in the
-   path[terraform/static/](terraform/static)
-   ![set_org_xpanse_appearance_2](static/set_org_xpanse_appearance_2.png)
-
 ## Add Users for Xpanse
 
 After completing the steps in [Manual Configuration on Console](#Manual Configuration on Console),

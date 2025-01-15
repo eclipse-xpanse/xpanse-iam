@@ -18,4 +18,13 @@ resource "zitadel_label_policy" "label_policy" {
   font_color_dark        = "#ffffff"
   disable_watermark      = false
   set_active             = true
+  logo_hash              = filemd5("./static/logo-light.png")
+  logo_path              = "./static/logo-light.png"
+  logo_dark_hash         = filemd5("./static/logo-dark.png")
+  logo_dark_path         = "./static/logo-dark.png"
+  icon_hash              = filemd5("./static/icon-light.png")
+  icon_path              = "./static/icon-light.png"
+  icon_dark_hash         = filemd5("./static/icon-dark.png")
+  icon_dark_path         = "./static/icon-dark.png"
+  theme_mode             = "THEME_MODE_LIGHT"
 }
