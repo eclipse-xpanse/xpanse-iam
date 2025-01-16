@@ -1,7 +1,6 @@
 services:
   zitadel:
-    # The user should have the permission to write to ./machinekey
-    user: "${UID:-1001}"
+    container_name: zitadel
     restart: 'always'
     networks:
       - 'zitadel-dev'
@@ -15,6 +14,7 @@ services:
 
   db:
     restart: 'always'
+    container_name: zitadel-db
     image: ghcr.io/eclipse-xpanse/xpanse-zitadel-dev-db:latest # image built locally by commiting an already initialized zitadel Postgres DB
     healthcheck:
       test: [ "CMD-SHELL", "pg_isready", "-d", "zitadel", "-U", "postgres" ]

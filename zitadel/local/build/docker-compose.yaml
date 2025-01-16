@@ -2,6 +2,7 @@ services:
   zitadel:
     user: "${UID:-1001}"
     restart: 'always'
+    pull_policy: always
     container_name: application
     networks:
       - 'zitadel'
