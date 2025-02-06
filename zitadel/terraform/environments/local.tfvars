@@ -85,5 +85,19 @@ test_users = [
         "value" : "RegioCloud"
       }
     ]
+  },
+  {
+    "name" : "isv-a",
+    "email" : "isv-a@localhost.com",
+    "password" : "Zitadel@123",
+    "roles" : [
+      "isv"
+    ],
+    "meta-data" : [
+      {
+        "key" : "isv",
+        "value" : "ISV-A"
+      }
+    ]
   }
 ]
