@@ -1,0 +1,10 @@
+domain                             = "xpanse-demo.eclipseprojects.io"
+insecure                           = "false"
+port                               = "443"
+xpanse-ui_base_uri                 = "http://xpanse-demo.eclipseprojects.io/app"
+xpanse_swagger-ui_base_uri         = "https://xpanse-demo.eclipseprojects.io"
+terraform-boot_swagger-ui_base_uri = "http://localhost:9090"
+tofu-maker_swagger-ui_base_uri     = "http://localhost:9092"
+auth_token_type                    = "JWT"
+is_local_dev_env                   = false
+test_users = []
